@@ -1,11 +1,11 @@
 {
   "version": 5,
-  "prev": "fa9ed46e44d2dc02be7ed1508a4122ecba01935f",
+  "prev": "8ad14bedd798bc592435d59b2a8d96f2b0677a88",
   "head": "0149d048bbe6341fa1e5105831982a38a58eda64",
   "applied": [
     "gitignore",
     "warn",
-    "long75"
+    "long64"
   ],
   "unapplied": [],
   "hidden": [],
@@ -16,7 +16,7 @@
     "warn": {
       "oid": "50aa4b0f758be1b06a9a50f1086ff22726f228e7"
     },
-    "long75": {
+    "long64": {
       "oid": "0149d048bbe6341fa1e5105831982a38a58eda64"
     }
   }
