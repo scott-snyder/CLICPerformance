@@ -1,6 +1,0 @@
-Bottom: bc667fcc4df51906efd0401ffe310885adcc02a1
-Top:    bc667fcc4df51906efd0401ffe310885adcc02a1
-Author: scott snyder <sss@karma>
-Date:   2023-08-10 14:14:13 -0400
-
-Update for change in long64 definition in dd4hep.
