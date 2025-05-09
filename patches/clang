@@ -1,0 +1,9 @@
+Bottom: 0b6388544e8ea1c144eb5e75bf15215b48250b9b
+Top:    0b6388544e8ea1c144eb5e75bf15215b48250b9b
+Author: sss <sss@karma>
+Date:   2025-05-09 12:07:24 -0400
+
+Fix clang warnings.
+
+Unused variables.
+Use std;:abs for integer arguments rather than fabs.
