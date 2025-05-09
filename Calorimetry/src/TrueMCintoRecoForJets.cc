@@ -7,6 +7,7 @@
 #include "DDRec/DetectorData.h"
 
 #include "TLorentzVector.h"
+#include <cmath>
 
 using namespace lcio ;
 using namespace marlin ;
@@ -118,7 +119,7 @@ void TrueMCintoRecoForJets::processEvent( LCEvent* evt ) {
         }
         continue;
       }
-    if(m_ignoreNeutrinosInMCJets && (fabs(mcp->getPDG())==12 || fabs(mcp->getPDG())==14 || fabs(mcp->getPDG())==16)){
+    if(m_ignoreNeutrinosInMCJets && (std::abs(mcp->getPDG())==12 || std::abs(mcp->getPDG())==14 || std::abs(mcp->getPDG())==16)){
       continue;
     }
     ReconstructedParticleImpl* truePartIntoReco = new ReconstructedParticleImpl;

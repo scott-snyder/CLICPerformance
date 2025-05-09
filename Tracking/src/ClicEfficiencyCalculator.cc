@@ -583,7 +583,7 @@ void ClicEfficiencyCalculator::processEvent( LCEvent* evt ) {
    */
   
   // Loop over particles
-  int nReconstructed(0), nReconstructable(0), nChargePart(0), nCloseTrk(0);
+  int nReconstructed(0), nReconstructable(0), /*nChargePart(0),*/ nCloseTrk(0);
   int nParticles = particleCollection->getNumberOfElements();
   for(int itParticle=0;itParticle<nParticles;itParticle++){
     
@@ -692,7 +692,7 @@ void ClicEfficiencyCalculator::processEvent( LCEvent* evt ) {
 
       // Only look at charged stable particles. Some descriptive comment should be added
       if (mcCharge>0.5 && particle->getGeneratorStatus()==1){
-        nChargePart++;
+        //nChargePart++;
         m_mcCat.push_back(0);
         m_mcTheta.push_back(mcTheta);
         m_mcPt.push_back(mcPt);
@@ -977,14 +977,14 @@ bool ClicEfficiencyCalculator::isReconstructable(MCParticle*& particle, std::str
     std::vector<TrackerHit*> trackHits = particleHits[particle];
     if(trackHits.size() >= 4) passNHits = true;
     
-    int nVXDHits = 0;
+    //int nVXDHits = 0;
     UTIL::BitField64 encoder( lcio::LCTrackerCellID::encoding_string() ) ;
     std::vector<int > vec_hit_subdet;
     std::vector<int > vec_hit_layer;
     for (size_t ihit=0; ihit<trackHits.size(); ihit++){
       int subdetector = getSubdetector(trackHits.at(ihit), encoder);
       int layer = getLayer(trackHits.at(ihit), encoder);
-      if (subdetector==1 || subdetector==2) nVXDHits++;
+      //if (subdetector==1 || subdetector==2) nVXDHits++;
       vec_hit_subdet.push_back(subdetector);
       vec_hit_layer.push_back(layer);
     }
