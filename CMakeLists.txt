@@ -2,9 +2,12 @@
 # cmake file for building VTXTools
 # - based on $MARLIN/example/mymarlin/CMakeLists.txt
 # @author Daniel Hynds CERN-PH-LCD
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6 FATAL_ERROR)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.10 FATAL_ERROR)
 ########################################################
 
+cmake_policy(SET CMP0167 NEW)
+cmake_policy(SET CMP0074 NEW)
+cmake_policy(SET CMP0144 NEW)
 
 # project name
 PROJECT( ClicPerformance )
