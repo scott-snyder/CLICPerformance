@@ -3,6 +3,9 @@
 #include <iomanip>
 
 
+using namespace lcio;
+
+
 CLICRecoConfig aCLICRecoConfig;
 
 CLICRecoConfig::CLICRecoConfig() : Processor("CLICRecoConfig") {
@@ -53,14 +56,14 @@ void CLICRecoConfig::init() {
 
 }
 
-void CLICRecoConfig::processRunHeader( lcio::LCRunHeader* ){}
+void CLICRecoConfig::processRunHeader( LCRunHeader* ){}
 
-void CLICRecoConfig::processEvent( lcio::LCEvent* ) {
+void CLICRecoConfig::processEvent( LCEvent* ) {
   modifyEvent( nullptr );
 }
 
 
-void CLICRecoConfig::modifyEvent( lcio::LCEvent* ) {
+void CLICRecoConfig::modifyEvent( LCEvent* ) {
   streamlog_out(DEBUG9) << "Running Config" << std::endl;
 
   for (auto const& option : m_options) {
@@ -69,7 +72,7 @@ void CLICRecoConfig::modifyEvent( lcio::LCEvent* ) {
 
 }
 
-void CLICRecoConfig::check( lcio::LCEvent* ){}
+void CLICRecoConfig::check( LCEvent* ){}
 
 
 void CLICRecoConfig::end(){}
