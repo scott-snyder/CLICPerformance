@@ -21,14 +21,14 @@ public:
   virtual void init() ;
 
   // Called at the beginning of every run
-  virtual void processRunHeader( LCRunHeader* run ) ;
+  virtual void processRunHeader( lcio::LCRunHeader* run ) ;
 
   // Run over each event - the main algorithm
-  virtual void modifyEvent( LCEvent* evt ) ;
-  virtual void processEvent( LCEvent* evt ) ;
+  virtual void modifyEvent( lcio::LCEvent* evt ) ;
+  virtual void processEvent( lcio::LCEvent* evt ) ;
 
   // Run at the end of each event
-  virtual void check( LCEvent* evt ) ;
+  virtual void check( lcio::LCEvent* evt ) ;
 
   // Called at the very end for cleanup, histogram saving, etc.
   virtual void end() ;
