@@ -53,14 +53,14 @@ void CLICRecoConfig::init() {
 
 }
 
-void CLICRecoConfig::processRunHeader( LCRunHeader* ){}
+void CLICRecoConfig::processRunHeader( lcio::LCRunHeader* ){}
 
-void CLICRecoConfig::processEvent( LCEvent* ) {
+void CLICRecoConfig::processEvent( lcio::LCEvent* ) {
   modifyEvent( nullptr );
 }
 
 
-void CLICRecoConfig::modifyEvent( LCEvent* ) {
+void CLICRecoConfig::modifyEvent( lcio::LCEvent* ) {
   streamlog_out(DEBUG9) << "Running Config" << std::endl;
 
   for (auto const& option : m_options) {
@@ -69,7 +69,7 @@ void CLICRecoConfig::modifyEvent( LCEvent* ) {
 
 }
 
-void CLICRecoConfig::check( LCEvent* ){}
+void CLICRecoConfig::check( lcio::LCEvent* ){}
 
 
 void CLICRecoConfig::end(){}
