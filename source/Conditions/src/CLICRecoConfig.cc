@@ -3,6 +3,9 @@
 #include <iomanip>
 
 
+using namespace lcio;
+
+
 CLICRecoConfig aCLICRecoConfig;
 
 CLICRecoConfig::CLICRecoConfig() : Processor("CLICRecoConfig") {
