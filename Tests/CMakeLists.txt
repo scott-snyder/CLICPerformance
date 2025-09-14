@@ -77,14 +77,14 @@ SET(EOS_BACKGROUND_FILE /eos/experiment/clicdp/grid/ilc/prod/clic/3tev/gghad/CLI
 SET(CLIC_DETECTOR_MODEL CLIC_o3_v14)
 SET( test_name "test_${CLIC_DETECTOR_MODEL}_sim" )
 ADD_TEST( NAME t_${test_name}
-  COMMAND "run_test_k4geo.sh"
-  ddsim
-  --compactFile=$ENV{lcgeo_DIR}/CLIC/compact/${CLIC_DETECTOR_MODEL}/${CLIC_DETECTOR_MODEL}.xml
-  --runType=batch --inputFile ../Tests/yyxyev_000.stdhep -N 2
-  --outputFile=test${CLIC_DETECTOR_MODEL}.slcio
-  --gun.isotrop=true
-  --steeringFile=${CMAKE_CURRENT_SOURCE_DIR}/../clicConfig/clic_steer.py
-  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../clicConfig/
+  COMMAND bash -c " mkdir -p clicConfig; cd clicConfig; cp -r ${CMAKE_CURRENT_SOURCE_DIR}/../clicConfig/* . ; \
+  run_test_k4geo.sh \
+  ddsim \
+  --compactFile=$ENV{lcgeo_DIR}/CLIC/compact/${CLIC_DETECTOR_MODEL}/${CLIC_DETECTOR_MODEL}.xml \
+  --runType=batch --inputFile ${CMAKE_CURRENT_SOURCE_DIR}/yyxyev_000.stdhep -N 2 \
+  --outputFile=test${CLIC_DETECTOR_MODEL}.slcio \
+  --gun.isotrop=true \
+  --steeringFile=${CMAKE_CURRENT_SOURCE_DIR}/../clicConfig/clic_steer.py "
   )
 SET_TESTS_PROPERTIES( t_${test_name} PROPERTIES FAIL_REGULAR_EXPRESSION  "Exception;EXCEPTION;ERROR;Error" )
 
@@ -116,7 +116,7 @@ ADD_TEST( NAME t_${test_name}
   --global.MaxRecordNumber=2
   --Output_REC.LCIOOutputFile=reco_conformal_${CLIC_DETECTOR_MODEL}_rec.slcio
   --Output_DST.LCIOOutputFile=reco_conformal_${CLIC_DETECTOR_MODEL}_dst.slcio
-  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../clicConfig/
+  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/clicConfig/
   )
 SET_TESTS_PROPERTIES( t_${test_name} PROPERTIES
   FAIL_REGULAR_EXPRESSION  "Exception;EXCEPTION;\\[ ERROR;Error"
@@ -125,13 +125,13 @@ SET_TESTS_PROPERTIES( t_${test_name} PROPERTIES
 
 SET( test_name "test_${CLIC_DETECTOR_MODEL}_vtx_makentp" )
 ADD_TEST( NAME t_${test_name}
-  COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/../Tests/bin/MarlinTests.sh
-  ${CMAKE_INSTALL_PREFIX}/lib/libClicPerformance.so  Marlin
-  --InitDD4hep.DD4hepXMLFile=$ENV{lcgeo_DIR}/CLIC/compact/${CLIC_DETECTOR_MODEL}/${CLIC_DETECTOR_MODEL}.xml
-  --global.LCIOInputFiles=../clicConfig/reco_conformal_${CLIC_DETECTOR_MODEL}_dst.slcio
-  --global.MaxRecordNumber=2
-  vtx_makentp.xml
-  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../Flavour_tagging/
+  COMMAND bash -c " mkdir -p Flavour_tagging; cd Flavour_tagging; cp -r ${CMAKE_CURRENT_SOURCE_DIR}/../Flavour_tagging/* . ; \
+  ${CMAKE_CURRENT_SOURCE_DIR}/../Tests/bin/MarlinTests.sh \
+  ${CMAKE_INSTALL_PREFIX}/lib/libClicPerformance.so  Marlin \
+  --InitDD4hep.DD4hepXMLFile=$ENV{lcgeo_DIR}/CLIC/compact/${CLIC_DETECTOR_MODEL}/${CLIC_DETECTOR_MODEL}.xml \
+  --global.LCIOInputFiles=../clicConfig/reco_conformal_${CLIC_DETECTOR_MODEL}_dst.slcio \
+  --global.MaxRecordNumber=2 \
+  vtx_makentp.xml"
   )
 SET_TESTS_PROPERTIES( t_${test_name} PROPERTIES
   FAIL_REGULAR_EXPRESSION  "Exception;EXCEPTION;\\[ ERROR;Error"
@@ -440,11 +440,10 @@ SET_TESTS_PROPERTIES( t_${test_name} PROPERTIES
 SET(FCCee_DETECTOR_MODEL FCCee_o1_v04)
 SET( test_name "test_${FCCee_DETECTOR_MODEL}_sim" )
 ADD_TEST( NAME t_${test_name}
-  COMMAND "run_test_k4geo.sh"
-  ddsim --compactFile=$ENV{lcgeo_DIR}/FCCee/CLD/compact/${FCCee_DETECTOR_MODEL}/${FCCee_DETECTOR_MODEL}.xml
-  --runType=batch --inputFiles ../Tests/yyxyev_000.stdhep -N 2
-  --outputFile=test${FCCee_DETECTOR_MODEL}.slcio --gun.isotrop=true --steeringFile=${CMAKE_CURRENT_SOURCE_DIR}/../fcceeConfig/fcc_steer.py
-  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../fcceeConfig/
+  COMMAND bash -c " mkdir -p fcceeConfig; cd fcceeConfig; cp -r ${CMAKE_CURRENT_SOURCE_DIR}/../fcceeConfig/* . ; \
+  ddsim --compactFile=$ENV{lcgeo_DIR}/FCCee/CLD/compact/${FCCee_DETECTOR_MODEL}/${FCCee_DETECTOR_MODEL}.xml \
+  --runType=batch --inputFiles ${CMAKE_CURRENT_SOURCE_DIR}/yyxyev_000.stdhep -N 2 \
+  --outputFile=test${FCCee_DETECTOR_MODEL}.slcio --gun.isotrop=true --steeringFile=${CMAKE_CURRENT_SOURCE_DIR}/../fcceeConfig/fcc_steer.py "
   )
 SET_TESTS_PROPERTIES( t_${test_name} PROPERTIES
   FAIL_REGULAR_EXPRESSION  "Exception;EXCEPTION;ERROR;Error"
@@ -478,7 +477,7 @@ ADD_TEST( NAME t_${test_name}
   --global.MaxRecordNumber=3
   --Output_REC.LCIOOutputFile=reco_conformal_rec.slcio
   --Output_DST.LCIOOutputFile=reco_conformal_dst.slcio
-  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../fcceeConfig/
+  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/fcceeConfig/
   )
 SET_TESTS_PROPERTIES( t_${test_name} PROPERTIES
   FAIL_REGULAR_EXPRESSION  "Exception;EXCEPTION;\\[ ERROR;Error"
