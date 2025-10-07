@@ -79,11 +79,12 @@ ADD_TEST( NAME t_${test_name}
   COMMAND bash -c " mkdir -p clicConfig; cd clicConfig; cp -r ${CMAKE_CURRENT_SOURCE_DIR}/../clicConfig/* . ; \
   ddsim \
   --compactFile=$ENV{lcgeo_DIR}/CLIC/compact/${CLIC_DETECTOR_MODEL}/${CLIC_DETECTOR_MODEL}.xml \
-  --runType=batch --inputFile ../Tests/yyxyev_000.stdhep -N 2 \
+  --runType=batch --inputFile ${CMAKE_CURRENT_SOURCE_DIR}/yyxyev_000.stdhep -N 2 \
   --outputFile=test${CLIC_DETECTOR_MODEL}.slcio \
   --gun.isotrop=true \
   --steeringFile=${CMAKE_CURRENT_SOURCE_DIR}/../clicConfig/clic_steer.py \
   --physics.ESeverity IgnoreTheIssue " )
+  )
 SET_TESTS_PROPERTIES( t_${test_name} PROPERTIES FAIL_REGULAR_EXPRESSION  "Exception;EXCEPTION;ERROR;Error" )
 
 SET( test_name "test_${CLIC_DETECTOR_MODEL}_reco_truth" )
@@ -439,9 +440,10 @@ SET( test_name "test_${FCCee_DETECTOR_MODEL}_sim" )
 ADD_TEST( NAME t_${test_name}
   COMMAND bash -c " mkdir -p fcceeConfig; cd fcceeConfig; cp -r ${CMAKE_CURRENT_SOURCE_DIR}/../fcceeConfig/* . ; \
   ddsim --compactFile=$ENV{lcgeo_DIR}/FCCee/CLD/compact/${FCCee_DETECTOR_MODEL}/${FCCee_DETECTOR_MODEL}.xml \
-  --runType=batch --inputFiles ../Tests/yyxyev_000.stdhep -N 2 \
+  --runType=batch --inputFiles ${CMAKE_CURRENT_SOURCE_DIR}/yyxyev_000.stdhep -N 2 \
   --outputFile=test${FCCee_DETECTOR_MODEL}.slcio --gun.isotrop=true --steeringFile=${CMAKE_CURRENT_SOURCE_DIR}/../fcceeConfig/fcc_steer.py \
   --physics.ESeverity IgnoreTheIssue " )
+  )
 SET_TESTS_PROPERTIES( t_${test_name} PROPERTIES
   FAIL_REGULAR_EXPRESSION  "Exception;EXCEPTION;ERROR;Error"
 )
