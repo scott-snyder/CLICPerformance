@@ -84,7 +84,6 @@ ADD_TEST( NAME t_${test_name}
   --gun.isotrop=true \
   --steeringFile=${CMAKE_CURRENT_SOURCE_DIR}/../clicConfig/clic_steer.py \
   --physics.ESeverity IgnoreTheIssue " )
-  )
 SET_TESTS_PROPERTIES( t_${test_name} PROPERTIES FAIL_REGULAR_EXPRESSION  "Exception;EXCEPTION;ERROR;Error" )
 
 SET( test_name "test_${CLIC_DETECTOR_MODEL}_reco_truth" )
@@ -443,7 +442,6 @@ ADD_TEST( NAME t_${test_name}
   --runType=batch --inputFiles ${CMAKE_CURRENT_SOURCE_DIR}/yyxyev_000.stdhep -N 2 \
   --outputFile=test${FCCee_DETECTOR_MODEL}.slcio --gun.isotrop=true --steeringFile=${CMAKE_CURRENT_SOURCE_DIR}/../fcceeConfig/fcc_steer.py \
   --physics.ESeverity IgnoreTheIssue " )
-  )
 SET_TESTS_PROPERTIES( t_${test_name} PROPERTIES
   FAIL_REGULAR_EXPRESSION  "Exception;EXCEPTION;ERROR;Error"
 )
